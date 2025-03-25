@@ -11,7 +11,7 @@ function userMiddleware(req, res, next) {
 
   try {
     const decoded = jwt.verify(token, config.JWT_USER_PASSWORD);
-    console.log(decoded);
+    //console.log(decoded);
     req.userId = decoded.id;
 
     next();

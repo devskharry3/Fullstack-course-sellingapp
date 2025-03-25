@@ -76,9 +76,9 @@ const requiredEnvVars = [
   'CLOUDINARY_API_SECRET'
 ];
 
-for (const envVar of requiredEnvVars) {
+/*for (const envVar of requiredEnvVars) {
   if (!process.env[envVar]) {
     console.error(`Missing required environment variable: ${envVar}`);
     process.exit(1);
   }
-}
+}*/

@@ -29,7 +29,7 @@ function UpdateCourse() {
 
   // Fetch course data on component mount
   useEffect(() => {
-    console.log("Course ID from URL params:", courseId);
+    //console.log("Course ID from URL params:", courseId);
     
     if (!courseId || courseId === "undefined") {
       toast.error("Invalid course ID");
@@ -39,7 +39,7 @@ function UpdateCourse() {
 
     const fetchCourseData = async () => {
       try {
-        console.log("Fetching course with ID:", courseId);
+        //console.log("Fetching course with ID:", courseId);
         
         const response = await axios.get(
           `${BACKEND_URL}/course/${courseId}`
