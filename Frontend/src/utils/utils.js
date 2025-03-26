@@ -1,1 +1,1 @@
-export const BACKEND_URL = "http://localhost:4002/api/v1";
+export const BACKEND_URL = "https://famous-hildagarde-skharry-f4172305.koyeb.app";
