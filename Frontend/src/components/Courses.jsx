@@ -172,35 +172,34 @@ return (
             {courses.map((course) => (
               <div
                 key={course._id}
-                className="border border-gray-200 rounded-lg p-4 shadow-sm"
+                className="border border-gray-200 rounded-lg p-4 shadow-sm flex flex-col h-full"
               >
                 <img
                   src={course.image.url}
                   alt={course.title}
-                  className="rounded mb-4"
+                  className="rounded mb-4 h-48 w-full object-cover"
                 />
                 <h2 className="font-bold text-lg mb-2">{course.title}</h2>
-                <p className="text-gray-600 mb-4">
+                <p className="text-gray-600 mb-4 flex-grow">
                   {course.description.length > 100
                     ? `${course.description.slice(0, 100)}...`
                     : course.description}
                 </p>
-                <div className="flex justify-between items-center mb-4">
-                  <span className="font-bold text-xl">
+                <div className="flex items-center justify-between mb-4">
+                  <span className="font-bold text-lg">
                     ₹{course.price}{" "}
                     <span className="text-gray-500 line-through">5999</span>
                   </span>
                   <span className="text-green-600">20% off</span>
                 </div>
 
-
-                    {/* Buy page */}
-                    <Link
-                    to={`/buy/${course._id}`} // Pass courseId in URL
-                    className="bg-orange-500 w-full text-white px-4 py-2 rounded-lg hover:bg-blue-900 duration-300"
-                  >
-                    Buy Now
-                  </Link>
+                {/* Buy page */}
+                <Link
+                  to={`/buy/${course._id}`}
+                  className="bg-orange-500 w-full text-white px-4 py-2 rounded-lg hover:bg-blue-900 duration-300 mt-auto text-center"
+                >
+                  Buy Now
+                </Link>
               </div>
             ))}
           </div>
