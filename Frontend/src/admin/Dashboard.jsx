@@ -4,25 +4,22 @@ import logo from "../../public/logo.webp";
 import axios from "axios";
 import toast from "react-hot-toast";
 import { BACKEND_URL } from "../utils/utils";
+import { useNavigate } from "react-router-dom";
 
 function Dashboard() {
+  const navigate = useNavigate();
+
   const handleLogout = async() => {
     try {
-        // Wait for the response using await
-        const response = await axios.get(`${BACKEND_URL}/admin/logout`, {
-            withCredentials: true,
-        });
-        
-        // Clear the token from localStorage
-        toast.success(response.data.message);
-        localStorage.removeItem('admin');
-        
-    } catch(error) {
-        console.log("Error in logging out", error);
-        toast.error(error.response?.data?.error || "Error in logging out");
+      // Simply remove the admin data from localStorage
+      localStorage.removeItem("admin");
+      toast.success("Logged out successfully");
+      navigate("/admin/login");
+    } catch (error) {
+      console.error("Logout error:", error);
+      toast.error("Error logging out");
     }
-}
-
+  }
 
   return (
     <div className="flex h-screen">

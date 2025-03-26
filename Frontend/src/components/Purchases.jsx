@@ -105,18 +105,14 @@ const Purchases = () => {
 
   const handleLogout = async () => {
     try {
-      const response = await axios.get(`${BACKEND_URL}/user/logout`, {
-        withCredentials: true
-      });
-      
-      toast.success(response.data.message);
-      localStorage.removeItem('user');
+      // Simply remove the token from localStorage
+      localStorage.removeItem("user");
       setIsLoggedIn(false);
-      navigate("/login");
-      
-    } catch(error) {
-      console.log("Error in logging out", error);
-      toast.error(error.response?.data?.error || "Error in logging out");
+      toast.success("Logged out successfully");
+      navigate("/");
+    } catch (error) {
+      console.error("Logout error:", error);
+      toast.error("Error logging out");
     }
   };
 
