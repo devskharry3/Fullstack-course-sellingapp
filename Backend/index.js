@@ -76,6 +76,15 @@ app.get('/', (req, res) => {
 // Add this to your Express app setup
 app.use('/uploads', express.static('uploads'));
 
+// Add a health check endpoint
+app.get('/api/v1/health', (req, res) => {
+  res.status(200).json({
+    status: 'ok',
+    message: 'Server is running',
+    timestamp: new Date().toISOString()
+  });
+});
+
 // Add a catch-all route for handling 404 errors
 app.use('*', (req, res) => {
   res.status(404).json({
