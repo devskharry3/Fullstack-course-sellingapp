@@ -121,6 +121,7 @@ function App() {
             )
           }
         />
+        <Route path="*" element={<div>Page not found</div>} />
       </Routes>
       <Toaster />
     </div>
