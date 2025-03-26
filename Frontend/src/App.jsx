@@ -67,7 +67,7 @@ function App() {
   }, [location.pathname, isAdminLoggedIn, navigate])
 
   return (
-    <Router>
+    <div>
       <Routes>
         <Route path="/" element={<Home />}/>
         <Route path="/login" element={<Login/>}/>
@@ -123,7 +123,7 @@ function App() {
         />
       </Routes>
       <Toaster />
-    </Router>
+    </div>
   )
 }
 
