@@ -14,6 +14,7 @@ import Dashboard from './admin/Dashboard'
 import CourseCreate from './admin/CourseCreate'
 import UpdateCourse from './admin/UpdateCourse'
 import OurCourses from './admin/OurCourses'
+import { BrowserRouter as Router } from 'react-router-dom';
 
 function App() {
   const navigate = useNavigate()
@@ -66,7 +67,7 @@ function App() {
   }, [location.pathname, isAdminLoggedIn, navigate])
 
   return (
-    <div>
+    <Router>
       <Routes>
         <Route path="/" element={<Home />}/>
         <Route path="/login" element={<Login/>}/>
@@ -122,7 +123,7 @@ function App() {
         />
       </Routes>
       <Toaster />
-    </div>
+    </Router>
   )
 }
 

@@ -1,6 +1,23 @@
 import dotenv from 'dotenv';
 dotenv.config(); // Ensure env variables are loaded at the start
 
+// Add environment variable validation at the beginning
+const requiredEnvVars = [
+  'PORT',
+  'MONGO_URI',
+  'CLOUDINARY_CLOUD_NAME',
+  'CLOUDINARY_API_KEY',
+  'CLOUDINARY_API_SECRET',
+  'FRONTEND_URL'
+];
+
+for (const envVar of requiredEnvVars) {
+  if (!process.env[envVar]) {
+    console.error(`Missing required environment variable: ${envVar}`);
+    process.exit(1);
+  }
+}
+
 import mongoose from 'mongoose';
 import { v2 as cloudinary } from 'cloudinary';
 import express from 'express';
@@ -10,7 +27,6 @@ import userRoute from './routes/user.route.js';
 import adminRoute from './routes/admin.route.js';
 import cookieParser from 'cookie-parser';
 import orderRoute from './routes/order.route.js'
-
 
 const app = express();
 const port = process.env.PORT || 3000;
@@ -60,25 +76,24 @@ app.get('/', (req, res) => {
 // Add this to your Express app setup
 app.use('/uploads', express.static('uploads'));
 
+// Add a catch-all route for handling 404 errors
+app.use('*', (req, res) => {
+  res.status(404).json({
+    success: false,
+    message: `Route not found: ${req.originalUrl}`
+  });
+});
+
+// Add error handling middleware
+app.use((err, req, res, next) => {
+  console.error('Error:', err);
+  res.status(err.status || 500).json({
+    success: false,
+    message: err.message || 'Internal Server Error'
+  });
+});
+
 // Start Server
 app.listen(port, () => {
   console.log(`Server is running on port ${port}`);
 });
-
-
-
-// Add this after dotenv.config()
-const requiredEnvVars = [
-  'PORT',
-  'MONGO_URI',
-  'CLOUDINARY_CLOUD_NAME',
-  'CLOUDINARY_API_KEY',
-  'CLOUDINARY_API_SECRET'
-];
-
-/*for (const envVar of requiredEnvVars) {
-  if (!process.env[envVar]) {
-    console.error(`Missing required environment variable: ${envVar}`);
-    process.exit(1);
-  }
-}*/
