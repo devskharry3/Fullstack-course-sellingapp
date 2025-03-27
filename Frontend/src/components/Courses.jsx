@@ -140,22 +140,22 @@ return (
     </aside>
 
     {/* Main content */}
-    <main className="ml-0 md:ml-64 w-full bg-white p-10">
-      <header className="flex justify-between items-center mb-10">
-        <h1 className="text-xl font-bold">Courses</h1>
-        <div className="flex items-center space-x-3">
-          <div className="flex items-center">
+    <main className="ml-0 md:ml-64 w-full bg-white p-4 md:p-10">
+      <header className="flex flex-col md:flex-row justify-between items-center mb-6 md:mb-10 gap-4">
+        <h1 className="text-xl md:text-2xl font-bold w-full md:w-auto text-center md:text-left">Courses</h1>
+        <div className="flex items-center space-x-3 w-full md:w-auto">
+          <div className="flex items-center w-full md:w-auto">
             <input
               type="text"
               placeholder="Type here to search..."
-              className="border border-gray-300 rounded-l-full px-4 py-2 h-10 focus:outline-none"
+              className="border border-gray-300 rounded-l-full px-4 py-2 h-10 focus:outline-none w-full"
             />
             <button className="h-10 border border-gray-300 rounded-r-full px-4 flex items-center justify-center">
               <FiSearch className="text-xl text-gray-600" />
             </button>
           </div>
 
-          <FaCircleUser className="text-4xl text-blue-600" />
+          <FaCircleUser className="text-4xl text-blue-600 hidden md:block" />
         </div>
       </header>
 

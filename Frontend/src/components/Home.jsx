@@ -74,23 +74,23 @@ const Home = () => {
         slidesToScroll: 1,
         initialSlide: 0,
         autoplay: true,
-        autoplaySpeed:3000,
-        cssEase:"linear",
+        autoplaySpeed: 3000,
+        cssEase: "linear",
         responsive: [
           {
             breakpoint: 1024,
             settings: {
               slidesToShow: 3,
-              slidesToScroll: 2,
+              slidesToScroll: 1,
               infinite: true,
               dots: true
             }
           },
           {
-            breakpoint: 600,
+            breakpoint: 768,
             settings: {
               slidesToShow: 2,
-              slidesToScroll: 2,
+              slidesToScroll: 1,
               initialSlide: 2
             }
           },
@@ -107,27 +107,34 @@ const Home = () => {
     <div className='bg-gradient-to-r from-black to-blue-950 min-h-screen'>
         <div className=' text-white container mx-auto '>
         {/* Header */}
-        <header className='flex items-center justify-between p-6 '>
+        <header className='flex justify-between items-center p-4 md:px-8 lg:px-16'>
             <div className='flex items-center space-x-2'>
                 <img src={logo} alt="" className='w-10 h-10 rounded-full' />
-                <h1 className='text-2xl text-orange-500 font-bold' >CourseMaven</h1>
+                <h1 className='text-2xl text-orange-500 font-bold'>
+                    CourseHaven
+                </h1>
             </div>
-            <div className='space-x-4'>
+            <div className='flex space-x-2 md:space-x-4'>
                 {isLoggedIn ? (
-                    <button 
-                        onClick={handleLogout}
-                        className='bg-transparent text-white py-2 px-4 border border-white rounded'
-                    >
-                    Logout
-                    </button>
+                    <>
+                        <Link to={"/courses"} className='bg-orange-500 text-white py-1 px-2 md:py-2 md:px-4 rounded text-sm md:text-base'>
+                            Courses
+                        </Link>
+                        <button 
+                            onClick={handleLogout}
+                            className='bg-transparent text-white py-1 px-2 md:py-2 md:px-4 border border-white rounded text-sm md:text-base'
+                        >
+                            Logout
+                        </button>
+                    </>
                 ) : (
                     <>
-                        <Link to={"/login"} 
-                            className='bg-transparent text-white py-2 px-4 border border-white rounded'>
+                        <Link to={"/login"} className='bg-orange-500 text-white py-1 px-2 md:py-2 md:px-4 rounded text-sm md:text-base'>
                             Login
                         </Link>
                         <Link to={"/signup"} 
-                            className='bg-transparent text-white py-2 px-4 border border-white rounded'>
+                            className='bg-transparent text-white py-1 px-2 md:py-2 md:px-4 border border-white rounded text-sm md:text-base'
+                        >
                             Signup
                         </Link>
                     </>
@@ -173,40 +180,38 @@ const Home = () => {
          <hr className='my-20' />
         {/*Footer*/}
         <footer className='mt-10'>
-            <div className='grid grid-cols-1 md:grid-cols-3 gap-8 px-4'>
+            <div className='grid grid-cols-1 md:grid-cols-3 gap-8 px-4 max-w-6xl mx-auto'>
                 <div className='flex flex-col items-center md:items-start'>
                     <div className='flex items-center space-x-2'>
-                    <img src={logo} alt="" className='w-10 h-10 rounded-full' />
-                    <h1 className='text-2xl text-orange-500 font-bold'>
-                        CourseHaven
-                    </h1>
+                        <img src={logo} alt="" className='w-10 h-10 rounded-full' />
+                        <h1 className='text-2xl text-orange-500 font-bold'>
+                            CourseHaven
+                        </h1>
+                    </div>
+                    <div className='mt-3 ml-2 md:ml-0'>
+                        <p className='mb-2 text-center md:text-left'>follow us </p> 
+                        <div className='flex space-x-4 justify-center md:justify-start'>
+                            <a href="#"><FaFacebook className='text-2xl hover:text-blue-400 duration-300' /></a>
+                            <a href="#"><FaInstagram className='text-2xl hover:text-pink-600 duration-300' /></a>
+                            <a href="#"><FaTwitter className='text-2xl hover:text-blue-600 duration-300' /></a>
+                        </div>
+                    </div>
                 </div>
-                <div className='mt-3 ml-2 md:ml-0'>
-                    <p className='mb-2' >follow us </p> 
-                    <div className='flex space-x-4'>
-                    <a href=""><FaFacebook className=' text-2xl hover:text-blue-400 duration-300'  /></a>
-                     <a href=""><FaInstagram className='text-2xl hover:text-pink-600 duration-300' /></a>
-                     <a href=""><FaTwitter className='text-2xl hover:text-blue-600 duration-300' /></a>
-                     </div>
-                </div>
-                </div>
-                <div className='items-center flex flex-col'>
+                <div className='text-center md:text-left'>
                     <h3 className='text-lg font-semibold mb-4'>connects</h3>
-                    <ul className='spcae-y-2 text-gray-400' >
-                        <li className='hover:text-white cursor-pointer duration-300' >Youtube- Skharrychan</li>
+                    <ul className='space-y-2 text-gray-400'>
+                        <li className='hover:text-white cursor-pointer duration-300'>Youtube- Skharrychan</li>
                         <li className='hover:text-white cursor-pointer duration-300'>telegram- Skharrycodes</li>
                         <li className='hover:text-white cursor-pointer duration-300'>Github- Skharry</li>
                     </ul>
                 </div>
-                <div>
-                <div className='items-center flex flex-col'>
+                <div className='text-center md:text-left'>
                     <h3 className='text-lg font-semibold mb-4'>Copyright &#169; 2024</h3>
-                    <ul className='spcae-y-2 text-gray-400' >
-                        <li className='hover:text-white cursor-pointer duration-300' >Terms & Conditions</li>
+                    <ul className='space-y-2 text-gray-400'>
+                        <li className='hover:text-white cursor-pointer duration-300'>Terms & Conditions</li>
                         <li className='hover:text-white cursor-pointer duration-300'>Privacy Policy</li>
                         <li className='hover:text-white cursor-pointer duration-300'>Refund & Cancellation</li>
-                        </ul>
-                        </div>
+                    </ul>
                 </div>
             </div>
         </footer>
