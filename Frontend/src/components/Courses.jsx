@@ -187,7 +187,7 @@ return (
                 </p>
                 <div className="flex items-center justify-between mb-4">
                   <span className="font-bold text-lg">
-                    ₹{course.price}{" "}
+                    ${course.price}{" "}
                     <span className="text-gray-500 line-through">5999</span>
                   </span>
                   <span className="text-green-600">20% off</span>
