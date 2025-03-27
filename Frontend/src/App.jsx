@@ -1,4 +1,4 @@
-import { Routes, Route, Navigate, useNavigate, useLocation } from 'react-router'
+import { Routes, Route, Navigate, useNavigate, useLocation, Link } from 'react-router'
 import { useEffect, useState } from 'react'
 import './App.css'
 import Home from './components/Home'
@@ -79,7 +79,25 @@ function App() {
         <Route path="/purchases" element={user ? <Purchases /> : <Navigate to={"/login"} />} />
 
         {/*Admin Routes*/} 
-        <Route path="/admin/signup" element={<AdminSignup/>}/>
+        <Route 
+          path="/admin/signup" 
+          element={
+            <div className="flex flex-col items-center justify-center h-screen bg-gray-100">
+              <div className="bg-white p-8 rounded-lg shadow-md max-w-md w-full">
+                <h1 className="text-2xl font-bold text-center mb-6">Admin Registration Closed</h1>
+                <p className="text-gray-600 mb-6 text-center">
+                  Admin registration is currently disabled. Please contact the system administrator for access.
+                </p>
+                <Link 
+                  to="/admin/login" 
+                  className="w-full bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-600 transition duration-200 block text-center"
+                >
+                  Go to Admin Login
+                </Link>
+              </div>
+            </div>
+          }
+        />
         <Route path="/admin/login" element={<AdminLogin/>}/>
         <Route 
           path="/admin/dashboard" 

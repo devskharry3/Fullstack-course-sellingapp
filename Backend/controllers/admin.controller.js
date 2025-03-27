@@ -3,6 +3,13 @@ import bcrypt from "bcryptjs";
 import { z } from "zod";
 import jwt from "jsonwebtoken"
 export const signup = async(req,res) => {
+    // Return a 403 Forbidden response
+    return res.status(403).json({
+        success: false,
+        message: "Admin registration is currently disabled. Please contact the system administrator for access."
+    });
+    
+    // The code below will not execute since we're returning early
     const {firstName, lastName,email,password}=req.body; 
 
     const adminSchema = z.object({
