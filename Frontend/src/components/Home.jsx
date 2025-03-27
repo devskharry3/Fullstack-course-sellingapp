@@ -179,7 +179,7 @@ const Home = () => {
 
          <hr className='my-20' />
         {/*Footer*/}
-        <footer className='mt-10'>
+        <footer className='mt-10 pb-10'>
             <div className='grid grid-cols-1 md:grid-cols-3 gap-8 px-4 max-w-6xl mx-auto'>
                 <div className='flex flex-col items-center md:items-start'>
                     <div className='flex items-center space-x-2'>
