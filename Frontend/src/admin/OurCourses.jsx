@@ -105,22 +105,22 @@ function OurCourses() {
               <div className="flex justify-between mt-4 text-gray-800 font-bold">
                 <div>
                   {" "}
-                  ₹{course.price}{" "}
+                  ${course.price}{" "}
                   <span className="line-through text-gray-500">₹300</span>
                 </div>
                 <div className="text-green-600 text-sm mt-2">10 % off</div>
               </div>
 
-              <div className="flex justify-between">
+              <div className="flex flex-col sm:flex-row gap-2 mt-4 justify-center">
                 <Link
-                  to={`/admin/update-course/${course._id}`}
-                  className="bg-orange-500 text-white py-2 px-4 mt-4 rounded hover:bg-blue-600"
+                  to={`/admin/update/${course._id}`}
+                  className="bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-600 text-center"
                 >
                   Update
                 </Link>
                 <button
                   onClick={() => handleDelete(course._id)}
-                  className="bg-red-500 text-white py-2 px-4 mt-4 rounded hover:bg-red-600"
+                  className="bg-red-500 text-white py-2 px-4 rounded hover:bg-red-600"
                 >
                   Delete
                 </button>
